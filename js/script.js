@@ -75,7 +75,7 @@
         let html = '';
 
         for (article of articles) {
-            
+
             /* [DONE] get the article id */
             const articleId = article.getAttribute("id");
 
@@ -88,13 +88,13 @@
             const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
             console.log(linkHTML);
 
-            /* [DONE] insert link into html variable */
-            
+            /* [ALMOST DONE] insert link into html variable */
+
             html = html + linkHTML;
             console.log(html);
 
             // titleList.insertAdjacentHTML('beforeEnd', 'linkHTML');
-            
+
         }
 
         titleList.innerHTML = html;
