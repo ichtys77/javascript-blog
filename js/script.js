@@ -95,7 +95,10 @@
         }
 
         /* create HTML of the link */
-
+        // for (let article of articles) {
+            const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+            console.log(linkHTML);
+        // }
         /* insert link into titleList */
 
     }
