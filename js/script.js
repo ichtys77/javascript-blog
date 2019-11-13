@@ -51,7 +51,8 @@
 
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
-    optTitleListSelector = '.titles';
+    optTitleListSelector = '.titles',
+    optArticleTagsSelector = '.post-tags .list'
 
   function generateTitleLinks() {
     console.log('Generate Title Links');
@@ -80,7 +81,6 @@
       const articleId = article.getAttribute('id');
 
       /* [DONE] find the title element */
-
       /* [DONE] get the title from the title element */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
 
