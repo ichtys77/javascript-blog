@@ -12,7 +12,7 @@
   const titleClickHandler = function (event) {
     event.preventDefault();
     const clickedElement = this;
-    console.log('Link was clicked!');
+    // console.log('Link was clicked!');
 
     /* [DONE] remove class 'active' from all article links  */
 
@@ -37,12 +37,12 @@
     /* [DONE] get 'href' attribute from the clicked link */
 
     const articleSelector = clickedElement.getAttribute('href');
-    console.log(articleSelector);
+    // console.log(articleSelector);
 
     /* [DONE] find the correct article using the selector (value of 'href' attribute) */
 
     const targetArticle = document.querySelector(articleSelector);
-    console.log(targetArticle);
+    // console.log(targetArticle);
 
     /* [DONE] add class 'active' to the correct article */
 
@@ -52,10 +52,10 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list'
+    optArticleTagsSelector = '.post-tags .list';
 
   function generateTitleLinks() {
-    console.log('Generate Title Links');
+    // console.log('Generate Title Links');
 
     /* [DONE] remove contents of titleList */
 
@@ -86,12 +86,12 @@
 
       /* [DONE] create HTML of the link */
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-      console.log(linkHTML);
+      // console.log(linkHTML);
 
       /* [ALMOST DONE] insert link into html variable */
 
       html = html + linkHTML;
-      console.log(html);
+      // console.log(html);
 
       // titleList.insertAdjacentHTML('beforeEnd', 'linkHTML');
 
@@ -112,7 +112,9 @@
   generateTitleLinks();
 
   function generateTags() {
-    /* find all articles */
+    /* [DONE] find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+    console.log(articles);
 
     /* START LOOP: for every article: */
 
