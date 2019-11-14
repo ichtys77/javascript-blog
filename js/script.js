@@ -95,11 +95,11 @@
 
       /* [DONE] find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
-      console.log(tagsWrapper);
+      //console.log(tagsWrapper);
 
       /* [DONE] make html variable with empty string */
       let html = '';
-      console.log(html);
+      //console.log(html);
 
       /* [DONE] get tags from data-tags attribute */
       const articleTags = article.getAttribute('data-tags');
@@ -107,23 +107,23 @@
 
       /* [DONE] split tags into array */
       const articleTagsArray = articleTags.split(' ');
-      // console.log(articleTagsArray);
+      //console.log(articleTagsArray);
 
       /* {DONE] START LOOP: for each tag */
       for (let tag of articleTagsArray) {
 
         /* [DONE] generate HTML of the link */
         const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-        console.log(tagLinkHTML);
+        //console.log(tagLinkHTML);
 
-        /* add generated code to html variable */
+        /* [DONE] add generated code to html variable */
         html = html + tagLinkHTML;
-        // console.log(html);
+        console.log(html);
 
         /* END LOOP: for each tag */
       }
 
-      /* insert HTML of all the links into the tags wrapper */
+      /* [DONE] insert HTML of all the links into the tags wrapper */
       tagsWrapper.innerHTML = html;
 
       /* END LOOP: for every article: */
