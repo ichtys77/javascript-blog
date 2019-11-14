@@ -88,7 +88,7 @@
   function generateTags() {
     /* [DONE] find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
-    console.log(articles);
+    //console.log(articles);
 
     /* [DONE] START LOOP: for every article: */
     for (let article of articles) {
@@ -99,22 +99,32 @@
 
       /* [DONE] make html variable with empty string */
       let html = '';
+      console.log(html);
 
       /* [DONE] get tags from data-tags attribute */
-      const tagsSelector = article.getAttribute('data-tags');
-      console.log(tagsSelector);
+      const articleTags = article.getAttribute('data-tags');
+      //console.log(articleTags);
 
-      /* split tags into array */
+      /* [DONE] split tags into array */
+      const articleTagsArray = articleTags.split(' ');
+      // console.log(articleTagsArray);
 
-      /* START LOOP: for each tag */
+      /* {DONE] START LOOP: for each tag */
+      for (let tag of articleTagsArray) {
 
-      /* generate HTML of the link */
+        /* [DONE] generate HTML of the link */
+        const tagLinkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+        console.log(tagLinkHTML);
 
-      /* add generated code to html variable */
+        /* add generated code to html variable */
+        html = html + tagLinkHTML;
+        // console.log(html);
 
-      /* END LOOP: for each tag */
+        /* END LOOP: for each tag */
+      }
 
       /* insert HTML of all the links into the tags wrapper */
+      tagsWrapper.innerHTML = html;
 
       /* END LOOP: for every article: */
     }
