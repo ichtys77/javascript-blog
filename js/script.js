@@ -38,7 +38,7 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list';
 
-  function generateTitleLinks() {
+  function generateTitleLinks(customSelector = '') {
 
     /* [DONE] remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
@@ -50,8 +50,10 @@
 
     clearTitleList();
 
-    /* [DONE] find all the articles and save them to variable: articles */
-    const articles = document.querySelectorAll(optArticleSelector);
+    /* [DONE] find all the articles or articles with tag and save them to variable: articles */
+    const articles = document.querySelectorAll(optArticleSelector + customSelector);
+    console.log(customSelector);
+    console.log(optArticleSelector + customSelector);
 
     let html = '';
 
@@ -159,19 +161,19 @@
       /* [DONE] END LOOP: for each active tag link */
     }
 
-    /* find all tag links with "href" attribute equal to the "href" constant */
+    /* [DONE] find all tag links with "href" attribute equal to the "href" constant */
     const activeTagLinksEqualToHref = document.querySelectorAll('a[href="' + href + '"]');
 
-    /* START LOOP: for each found tag link */
+    /* [DONE] START LOOP: for each found tag link */
     for (let activeTagLinkEqualToHref of activeTagLinksEqualToHref) {
 
-      /* add class active */
+      /* [DONE] add class active */
       activeTagLinkEqualToHref.classList.add('active');
 
-      /* END LOOP: for each found tag link */
+      /* [DONE] END LOOP: for each found tag link */
     }
 
-    /* execute function "generateTitleLinks" with article selector as argument */
+    /* [DONE] execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
   }
 
