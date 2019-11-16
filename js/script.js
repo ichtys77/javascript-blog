@@ -36,7 +36,8 @@
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
-    optArticleTagsSelector = '.post-tags .list';
+    optArticleTagsSelector = '.post-tags .list',
+    optArticleAuthorSelector = '.post-author';
 
   function generateTitleLinks(customSelector = '') {
 
@@ -52,8 +53,8 @@
 
     /* [DONE] find all the articles or articles with tag and save them to variable: articles */
     const articles = document.querySelectorAll(optArticleSelector + customSelector);
-    console.log(customSelector);
-    console.log(optArticleSelector + customSelector);
+    //console.log(customSelector);
+    //console.log(optArticleSelector + customSelector);
 
     let html = '';
 
@@ -97,11 +98,10 @@
 
       /* [DONE] find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
-      //console.log(tagsWrapper);
+      // console.log(tagsWrapper);
 
       /* [DONE] make html variable with empty string */
       let html = '';
-      //console.log(html);
 
       /* [DONE] get tags from data-tags attribute */
       const articleTags = article.getAttribute('data-tags');
@@ -195,4 +195,39 @@
 
   addClickListenersToTags();
 
+  function generateAuthors() {
+    //console.log('generateAuthors');
+    /* find all articles */
+    const articles = document.querySelectorAll(optArticleSelector);
+
+    /* START LOOP: for every article: */
+    for (let article of articles) {
+
+      /* find author wrapper */
+      const authorWrapper = article.querySelector(optArticleAuthorSelector);
+      //console.log(authorWrapper);
+
+      /* make html variable with empty string */
+      let html = '';
+
+      /* get author from data-author attribute */
+      const articleAuthor = article.getAttribute('data-author');
+      //console.log(articleAuthor);
+
+      /* generate HTML of the link */
+      const authorLinkHTML ='<a href="#' + articleAuthor + '">' + articleAuthor + '</a>';
+      //console.log(authorLinkHTML);
+
+      /* add generated code to html variable */
+      html = html + authorLinkHTML;
+
+      /* insert HTML link into the author wrapper */
+      authorWrapper.innerHTML = html;
+
+      /* END LOOP: for every article: */
+    }
+
+  }
+
+  generateAuthors();
 }
