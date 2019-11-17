@@ -38,7 +38,8 @@
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
     optArticleAuthorSelector = '.post-author',
-    optTagsListSelector = '.tags-list';
+    optTagsListSelector = '.tags. list';
+  // console.log(optTagsListSelector);
 
   function generateTitleLinks(customSelector = '') {
 
@@ -90,8 +91,9 @@
   generateTitleLinks();
 
   function generateTags() {
-    /* [NEW] create a new variable allTags with an empty array */
-    let allTags = [];
+
+    /* [NEW] create a new variable allTags with an empty object */
+    let allTags = {};
 
     /* [DONE] find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
@@ -102,7 +104,7 @@
 
       /* [DONE] find tags wrapper */
       const tagsWrapper = article.querySelector(optArticleTagsSelector);
-      // console.log(tagsWrapper);
+      //console.log(tagsWrapper);
 
       /* [DONE] make html variable with empty string */
       let html = '';
@@ -120,17 +122,20 @@
 
         /* [DONE] generate HTML of the link */
         const linkHTML = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
-        //console.log(tagLinkHTML);
+        // console.log(linkHTML);
 
         /* [DONE] add generated code to html variable */
         html = html + linkHTML;
-        //console.log(html);
+        // console.log(html);
 
         /* [NEW] check if this link is NOT already in allTags */
-        if (allTags.indexOf(linkHTML) == -1) {
+        // eslint-disable-next-line no-prototype-builtins
+        if (!allTags.hasOwnProperty(tag)) {
 
           /* [NEW] add generated code to allTags array */
-          allTags.push(linkHTML);
+          allTags[tag] = 1;
+        } else {
+          allTags[tag]++;
         }
 
         /* END LOOP: for each tag */
@@ -144,10 +149,22 @@
 
     /* [NEW] find list of tags in right column */
     const tagList = document.querySelector('.tags');
-    // console.log(tagList);
+    //console.log(tagList);
+
+    /* [NEW] create variable for all links HTML code */
+    let allTagsHTML = '';
+
+    /* [NEW] START LOOP: for each tag in allTags: */
+    for (let tag in allTags) {
+
+      /* [NEW] generate code of a link and add it to allTagHTML */
+      allTagsHTML += '<li><a href="#tag-' + tag + '">' + tag + '</a> (' + allTags[tag] + ')</li>';
+
+      /* [NEW] END LOOP: for each tag in allTags: */
+    }
 
     /* [NEW] add html from allTags to tagList */
-    tagList.innerHTML = allTags.join(' ');
+    tagList.innerHTML = allTagsHTML;
 
   }
 
@@ -161,19 +178,19 @@
 
     /* [DONE] make new constant named "clickedElement" and give it the value of "this" */
     const clickedElement = this;
-    console.log(this);
+    //console.log(this);
 
     /* [DONE] make a new constant "href" and read the attribute "href" of the clicked element */
     const href = clickedElement.getAttribute('href');
-    console.log(href);
+    // console.log(href);
 
     /* [DONE] make a new constant "tag" and extract tag from the "href" constant */
     const tag = href.replace('#tag-', '');
-    console.log(tag);
+    // console.log(tag);
 
     /* [DONE] find all tag links with class active */
     const activeTagLinks = document.querySelectorAll('a.active[href^="#tag-"]');
-    console.log(activeTagLinks);
+    // console.log(activeTagLinks);
 
     /* [DONE] START LOOP: for each active tag link */
     for (let activeTagLink of activeTagLinks) {
@@ -203,8 +220,9 @@
   function addClickListenersToTags() {
 
     /* [DONE] find all links to tags */
-    const links = document.querySelectorAll('.post-tags a');
-    // console.log(links);
+    //const links = document.querySelectorAll('.post-tags a');
+    const links = document.querySelectorAll('.tags a, .post-tags a');
+    console.log(links);
 
     /* [DONE] START LOOP: for each link */
     for (let link of links) {
@@ -220,7 +238,7 @@
   addClickListenersToTags();
 
   function generateAuthors() {
-    //console.log('generateAuthors');
+    console.log('generateAuthors');
     /* [DONE] find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
 
