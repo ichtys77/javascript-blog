@@ -404,13 +404,14 @@
     /* [NEW] START LOOP: for each author in allAuthors: */
     for (let articleAuthor in allAuthors) {
 
+      //console.log('articleAuthor: ', articleAuthor);
       /* [NEW] generate code of a link and add it to allAuthorHTML */
       //const authorLinkHTML = '<li><a href="#' + articleAuthor + '">' + articleAuthor + '</a> (' + allAuthors[articleAuthor] + ')</li>';
       //allAuthorHTML += authorLinkHTML;
       //console.log('authorLinkHTML: ', authorLinkHTML);
       allAuthorData.author.push({
-        id: articleAuthor,
-        count: allAuthors[articleAuthor]
+        idauthor: articleAuthor,
+        count: allAuthors[articleAuthor],
       });
 
       /* [NEW] END LOOP: for each articleAuthor in allAuthors: */
@@ -420,6 +421,7 @@
     //authorList.innerHTML = allAuthorHTML;
     authorList.innerHTML = templates.authorCloudLink(allAuthorData);
     console.log(allAuthorData);
+    console.log(authorList);
 
   }
 
